@@ -1,100 +1,84 @@
-public class MatrixOperations {
-
-    static int[] rowSums(int[][] matrix) {
-        if (matrix == null || matrix.length == 0)
-            return new int[0];
-
-        int[] sums = new int[matrix.length];
-
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                sums[i] += matrix[i][j];
+public class MatrixOpperation {
+    public int[] rowSum(int [][]arr)
+    {
+        int []sum=new int[arr.length];
+        for(int r=0;r<arr.length;r++)
+        {
+            int row_sum=0;
+            for(int c=0;c<arr[0].length;c++)
+            {
+                row_sum+=arr[r][c];
+            }
+            sum[r]=row_sum;
+        }
+        return sum;
+    }
+    public int[] columnSum(int [][]arr)
+    {
+        int []sum=new int[arr[0].length];
+        for(int c=0;c<arr[0].length;c++)
+        {
+            int csum=0;
+            for(int r=0;r<arr.length;r++)
+            {
+                csum+=arr[r][c];
+            }
+            sum[c]=csum;
+        }
+        return sum;
+    }
+    public int [][] add(int [][]arr1,int [][]arr2)
+    {
+        for(int r1=0,r2=0;r1<arr1.length && r2<arr2.length;r1++,r2++)
+        {
+            for(int c1=0,c2=0;c1<arr1[0].length && c2<arr2[0].length;c1++,c2++)
+            {
+                arr1[r1][c1]+=arr2[r2][c2];
             }
         }
-
-        return sums;
+        return arr1;
     }
-
-    static int[] columnSums(int[][] matrix) {
-        if (matrix == null || matrix.length == 0)
-            return new int[0];
-
-        int[] sums = new int[matrix[0].length];
-
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                sums[j] += matrix[i][j];
-            }
-        }
-
-        return sums;
-    }
-
-    static int[][] add(int[][] first, int[][] second) {
-        if (first == null || second == null ||
-            first.length != second.length ||
-            first[0].length != second[0].length) {
-
-            throw new IllegalArgumentException("invalid!");
-        }
-
-        int[][] res = new int[first.length][first[0].length];
-
-        for (int i = 0; i < first.length; i++) {
-            for (int j = 0; j < first[0].length; j++) {
-                res[i][j] = first[i][j] + second[i][j];
-            }
-        }
-
-        return res;
-    }
-
-    static int[][] transpose(int[][] matrix) {
-        if (matrix == null || matrix.length == 0)
-            return new int[0][0];
-
-        int[][] transposed = new int[matrix[0].length][matrix.length];
-
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                transposed[j][i] = matrix[i][j];
-            }
-        }
-
-        return transposed;
-    }
-
-    static int[][] multiply(int[][] first, int[][] second) {
-        if (first == null || second == null ||
-            first.length == 0 || second.length == 0 ||
-            first[0].length != second.length) {
-
-            throw new IllegalArgumentException("invalid!");
-        }
-
-        int[][] result = new int[first.length][second[0].length];
-
-        for (int i = 0; i < first.length; i++) {
-            for (int j = 0; j < second[0].length; j++) {
-                for (int k = 0; k < first[0].length; k++) {
-                    result[i][j] += first[i][k] * second[k][j];
+    public int [][] transpose(int [][]arr)
+    {
+        for(int r=0;r<arr.length;r++)
+        {
+            for(int j=0;j<arr[0].length;j++)
+            {
+                if(r<j)
+                {
+                    int temp=arr[r][j];
+                    arr[r][j]=arr[j][r];
+                    arr[j][r]=temp;
                 }
             }
         }
-
-        return result;
+        return arr;
     }
-
-    static void printMatrix(int[][] matrix) {
-        if (matrix == null || matrix.length == 0)
-            return;
-
-        for (int[] row : matrix) {
-            for (int val : row) {
-                System.out.print(val + " ");
+    public int[][] multiply(int [][] arr1, int [][] arr2)
+    {
+        
+            int [][] prod= new int[arr1.length][arr2[0].length];
+            for(int i=0;i<arr1.length;i++)
+            {
+                for(int j=0;j<arr2[0].length;j++)
+                {
+                    for(int k=0;k<arr1[0].length;k++)
+                    {
+                        prod[i][j]+=arr1[i][k]*arr2[k][j];
+                    }
+                }
             }
-
-            System.out.println();
+            return prod;
+    }
+    public void print(int [][] arr1)
+    {
+        for(int i=0;i<arr1.length;i++)
+        {
+            for(int j=0;j<arr1[0].length;j++)
+            {
+                System.out.print(" "+arr1[i][j]);
+            }
+            System.out.println(" ");
         }
     }
 }
