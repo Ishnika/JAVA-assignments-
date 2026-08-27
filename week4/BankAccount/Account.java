@@ -51,22 +51,3 @@ public class Account {
     }
 
 }
-/*Required filename: BankAccount.java
-
-Create an Account model class and a public BankAccount driver.
-
-Account requirements:
-
-- private String accountNumber
-- private String ownerName
-- private double balance
-- constructor with account number and owner; initial balance is zero
-- overloaded constructor accepting a valid non-negative opening balance
-- boolean deposit(double amount)
-- boolean withdraw(double amount)
-- getters, but no public setBalance()
-- String toString()
-
-Test positive, zero, and negative deposits; valid and excessive withdrawals;
-and two independent Account objects.
- */
