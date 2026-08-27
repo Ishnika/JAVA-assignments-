@@ -1,0 +1,72 @@
+public class Account {
+    private String accountNumber;
+    private String ownerName;
+    private double balance;
+    Account(String aNum,String oName)
+    {
+        accountNumber=aNum;
+        ownerName=oName;
+        balance =0;
+    }
+    Account(String aNum,String oName,double b)
+    {
+        accountNumber=aNum;
+        ownerName=oName;
+        balance=b;
+    }
+    public boolean deposit(double amount)
+    {
+        if(amount>0)
+            {
+                balance+=amount;
+                return true;
+            }
+        return false;
+    }
+    public boolean withdrawn(double amount)
+    {
+        if(amount>0)
+        {
+            balance-=amount;
+            return true ;
+        }
+        return false;
+    }
+    public double getBalance()
+    {
+        return balance;
+    }
+    public String getAccountNumber()
+    {
+        return accountNumber;
+    }
+    public String getOwnerName()
+    {
+        return ownerName;
+    }
+    public String toString()
+    {
+        String bal=String.valueOf(balance);
+        return (bal);
+    }
+
+}
+/*Required filename: BankAccount.java
+
+Create an Account model class and a public BankAccount driver.
+
+Account requirements:
+
+- private String accountNumber
+- private String ownerName
+- private double balance
+- constructor with account number and owner; initial balance is zero
+- overloaded constructor accepting a valid non-negative opening balance
+- boolean deposit(double amount)
+- boolean withdraw(double amount)
+- getters, but no public setBalance()
+- String toString()
+
+Test positive, zero, and negative deposits; valid and excessive withdrawals;
+and two independent Account objects.
+ */
